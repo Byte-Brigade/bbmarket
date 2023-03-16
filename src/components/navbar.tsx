@@ -1,0 +1,66 @@
+import { IconMenu2 } from "@tabler/icons-react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import Button from "./button";
+
+export default function Navbar() {
+  const router = useRouter();
+
+  return (
+    <nav className="md:flex md:justify-between md:items-center bg-slate-100 p-4 shadow-sm">
+      <div className="flex justify-between items-center">
+        <Link href="/">
+          <h1 className="text-2xl font-semibold">BBMarket</h1>
+        </Link>
+
+        <button
+          onClick={() => console.log("clicked")}
+          className="md:hidden flex justify-center items-center bg-slate-200 rounded-xl focus:ring-2 focus:ring-slate-500"
+        >
+          <span className="p-1">
+            <IconMenu2 className="stroke-slate-800" />
+          </span>
+        </button>
+      </div>
+      <div className="md:flex md:gap-x-4 md:items-center">
+        <ul className="py-2 md:flex md:gap-x-4">
+          <li
+            className={`w-full hover:text-sky-500 transition-colors duration-300 ${
+              router.pathname === "/"
+                ? "text-sky-500 border-b border-sky-500"
+                : "text-black"
+            }`}
+          >
+            <Link href="/">
+              <p className="text-lg">Home</p>
+            </Link>
+          </li>
+          <li
+            className={`w-full hover:text-sky-500 transition-colors duration-300 ${
+              router.pathname === "/products"
+                ? "text-sky-500 border-b border-sky-500"
+                : "text-black"
+            }`}
+          >
+            <Link href="/products">
+              <p className="text-lg">Products</p>
+            </Link>
+          </li>
+          <li
+            className={`w-full hover:text-sky-500 transition-colors duration-300 ${
+              router.pathname === "/about"
+                ? "text-sky-500 border-b border-sky-500"
+                : "text-black"
+            }`}
+          >
+            <Link href="/about">
+              <p className="text-lg">About</p>
+            </Link>
+          </li>
+        </ul>
+
+        <Button title="Login" onClick={() => router.push("/login")} />
+      </div>
+    </nav>
+  );
+}
