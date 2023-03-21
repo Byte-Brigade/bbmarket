@@ -1,21 +1,21 @@
 import { IconMenu2 } from "@tabler/icons-react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Button from "./button";
+import Button from "./Button";
 
 export default function Navbar() {
   const router = useRouter();
 
   return (
-    <nav className="md:flex md:justify-between md:items-center bg-slate-100 p-4 shadow-sm">
-      <div className="flex justify-between items-center">
+    <nav className="p-4 shadow-sm md:flex md:justify-between md:items-center bg-slate-100">
+      <div className="flex items-center justify-between">
         <Link href="/">
           <h1 className="text-2xl font-semibold">BBMarket</h1>
         </Link>
 
         <button
           onClick={() => console.log("clicked")}
-          className="md:hidden flex justify-center items-center bg-slate-200 rounded-xl focus:ring-2 focus:ring-slate-500"
+          className="flex items-center justify-center md:hidden bg-slate-200 rounded-xl focus:ring-2 focus:ring-slate-500"
         >
           <span className="p-1">
             <IconMenu2 className="stroke-slate-800" />
@@ -59,7 +59,7 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <Button title="Login" onClick={() => router.push("/login")} />
+        <Button title="Login" onClick={() => router.push("/auth/login")} />
       </div>
     </nav>
   );
